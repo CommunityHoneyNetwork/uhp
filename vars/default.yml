@@ -1,0 +1,20 @@
+---
+  pkgs:
+    - git
+    - jq
+    - libpython-dev
+    - python2.7-minimal
+    - python-pip
+    - authbind
+    - runit
+    - curl
+
+
+  uhp_repo: http://github.com/MattCarothers/uhp
+
+  uhp_dir: /opt/uhp
+  uhp_user: uhp
+
+  runit_service_dir: /etc/service/uhp
+
+  sysconfig_dir: /etc/default
