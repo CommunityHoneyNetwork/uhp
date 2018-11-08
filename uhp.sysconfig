@@ -1,7 +1,7 @@
-# This file is read from /etc/sysconfig/cowrie or /etc/default/cowrie
+# This file is read from /etc/sysconfig/uhp or /etc/default/uhp
 # depending on the base distro
 #
-# This can be modified to change the default setup of the cowrie unattended installation
+# This can be modified to change the default setup of the uhp unattended installation
 
 DEBUG=false
 
@@ -23,3 +23,9 @@ DEPLOY_KEY=
 # Registration information file
 # If running in a container, this needs to persist
 UHP_JSON="/etc/uhp/uhp.json"
+
+# Defaults include auto-config-gen.json, avtech-devices.json, generic-listener.json,
+# hajime.json, http-log-headers.json, http.json, pop3.json, and smtp.json
+UHP_CONFIG="smtp.json"
+
+UHP_LISTEN_PORT=2525

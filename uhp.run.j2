@@ -51,6 +51,11 @@ setup_uhp_conf () {
   sed -i "s/ident *= *uhp/ident = ${uid}/g" logging.cfg
   sed -i "s/secret *= *your_secret_here/secret = ${secret}/g" logging.cfg
 
+  if [ ! -d {{ uhp_config_dir }} ]; then
+    mkdir {{ uhp_config_dir }}
+  fi
+  cp /opt/uhp/configs/* /opt/uhp_configs
+
   popd
 }
 
@@ -111,7 +116,7 @@ main () {
                  ${uid} ${secret} \
                  ${debug}
 
-  exec su - uhp -c "/opt/uhp/uhp.py -H /opt/uhp/logging.cfg /opt/uhp/configs/pop3.json 1110"
+  exec su - uhp -c "/opt/uhp/uhp.py -H /opt/uhp/logging.cfg {{uhp_config_dir}}/${UHP_CONFIG} ${UHP_LISTEN_PORT}"
 }
 
 main "$@"

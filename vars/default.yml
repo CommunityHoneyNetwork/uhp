@@ -18,3 +18,5 @@
   runit_service_dir: /etc/service/uhp
 
   sysconfig_dir: /etc/default
+
+  uhp_config_dir: /opt/uhp_configs/
