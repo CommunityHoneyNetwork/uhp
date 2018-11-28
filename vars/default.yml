@@ -10,7 +10,7 @@
     - curl
 
 
-  uhp_repo: http://github.com/MattCarothers/uhp
+  uhp_repo: https://github.com/MattCarothers/uhp
 
   uhp_dir: /opt/uhp
   uhp_user: uhp
