@@ -29,6 +29,7 @@
       - name: UHP | clone UHP source
         git:
           repo: "{{ uhp_repo }}"
+          version: "{{ uhp_version }}"
           dest: "{{ uhp_dir }}"
 
       - name: UHP | set file perms

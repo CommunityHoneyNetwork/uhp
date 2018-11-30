@@ -11,6 +11,7 @@
 
 
   uhp_repo: https://github.com/MattCarothers/uhp
+  uhp_version: 1.1.0
 
   uhp_dir: /opt/uhp
   uhp_user: uhp
