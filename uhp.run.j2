@@ -120,7 +120,7 @@ main () {
   cp -f /opt/configs/*.json {{uhp_config_dir}}
   python /opt/tagging.py --directory {{uhp_config_dir}} --tags "${tags}"
 
-  exec su - uhp -c "/opt/uhp/uhp.py -H /opt/uhp/logging.cfg {{uhp_config_dir}}/${UHP_CONFIG} ${UHP_LISTEN_PORT}"
+  exec su - uhp -c "/opt/uhp/uhp.py --log-sessions -H /opt/uhp/logging.cfg {{uhp_config_dir}}/${UHP_CONFIG} ${UHP_LISTEN_PORT}"
 }
 
 main "$@"
