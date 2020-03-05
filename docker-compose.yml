@@ -1,0 +1,9 @@
+version: '3'
+services:
+  uhp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: uhp:ubuntu
+    volumes:
+      - ./uhp/uhp:/etc/uhp/:z
