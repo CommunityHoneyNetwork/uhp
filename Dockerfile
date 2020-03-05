@@ -11,7 +11,7 @@ LABEL changelog-url "https://github.com/CommunityHoneyNetwork/uhp/commits/master
 
 # Set DOCKER var - used by UHP init to determine logging
 ENV DOCKER "yes"
-
+ENV UHP_USER "uhp"
 
 RUN useradd uhp
 
@@ -33,4 +33,5 @@ RUN cd /opt && \
     git clone --branch 1.1.1 https://github.com/MattCarothers/uhp && \
     chown -R uhp:uhp /opt/uhp
 
+USER $UHP_USER
 ENTRYPOINT ["/code/entrypoint.sh"]
