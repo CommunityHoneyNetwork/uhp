@@ -1,8 +1,8 @@
 FROM ubuntu:18.04
 
-LABEL maintainer Alexander Merck <alexander.t.merck@gmail.com>
+LABEL maintainer Team Stingar <team.stingar@duke.edu>
 LABEL name "uhp"
-LABEL version "0.1"
+LABEL version "1.9"
 LABEL release "1"
 LABEL summary "UHP HoneyPot Container"
 LABEL description "Universal Honey Pot is a medium interaction honeypot that allows defenders to quickly implement line-based TCP protocols with a simple JSON configuration."
@@ -11,14 +11,27 @@ LABEL changelog-url "https://github.com/CommunityHoneyNetwork/uhp/commits/master
 
 # Set DOCKER var - used by UHP init to determine logging
 ENV DOCKER "yes"
-ENV playbook "uhp.yml"
+ENV UHP_USER "uhp"
+
+RUN useradd uhp
 
 RUN apt-get update \
-    && apt-get install -y ansible python-apt
+    && apt-get install -y ansible python-apt \
+    && apt-get install -y git jq python3-minimal python3-pip authbind curl
 
+RUN mkdir /code
+COPY configs /code/configs
+COPY tagging.py /code
+COPY entrypoint.sh /code
+COPY requirements.txt /code
+COPY logging.cfg.template /code
+RUN chmod +x /code/entrypoint.sh
 
-RUN echo "localhost ansible_connection=local" >> /etc/ansible/hosts
-ADD . /opt/
-RUN ansible-playbook /opt/${playbook}
+RUN pip3 install -r /code/requirements.txt
 
-ENTRYPOINT ["/usr/bin/runsvdir", "-P", "/etc/service"]
+RUN cd /opt && \
+    git clone --branch 1.1.1 https://github.com/MattCarothers/uhp && \
+    chown -R uhp:uhp /opt/uhp
+
+USER $UHP_USER
+ENTRYPOINT ["/code/entrypoint.sh"]
