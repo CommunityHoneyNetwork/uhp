@@ -7,3 +7,5 @@ services:
     image: uhp:ubuntu
     volumes:
       - ./uhp/uhp:/etc/uhp/:z
+    env_file:
+      - uhp.env
