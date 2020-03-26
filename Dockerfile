@@ -19,7 +19,8 @@ RUN apt-get update \
     && apt-get install -y ansible python-apt \
     && apt-get install -y git jq python3-minimal python3-pip authbind curl
 
-RUN mkdir /code
+RUN mkdir /code /etc/uhp
+RUN chown ${UHP_USER} /etc/uhp
 COPY configs /code/configs
 COPY tagging.py /code
 COPY entrypoint.sh /code
@@ -33,5 +34,5 @@ RUN cd /opt && \
     git clone --branch 1.1.1 https://github.com/MattCarothers/uhp && \
     chown -R uhp:uhp /opt/uhp
 
-USER $UHP_USER
+USER ${UHP_USER}
 ENTRYPOINT ["/code/entrypoint.sh"]
