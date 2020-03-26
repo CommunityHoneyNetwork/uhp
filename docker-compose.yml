@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     image: uhp:latest
     volumes:
-      - ./uhp/uhp:/etc/uhp/:z
+      - configs:/etc/uhp/
     env_file:
       - uhp.env
+volumes:
+  configs:
