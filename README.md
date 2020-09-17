@@ -6,6 +6,5 @@ uhp
 
 Find the documentation here: [https://communityhoneynetwork.readthedocs.io](https://communityhoneynetwork.readthedocs.io)
 
-| branch | build status |
-| ---    | ---          |
-| master | [![master status](https://gitlab.oit.duke.edu/stingar/uhp/badges/master/pipeline.svg)](https://gitlab.oit.duke.edu/stingar/uhp/commits/master)|
+
+![CI](https://github.com/CommunityHoneyNetwork/uhp/workflows/CI/badge.svg)
