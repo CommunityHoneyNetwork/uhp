@@ -12,6 +12,8 @@ LABEL changelog-url "https://github.com/CommunityHoneyNetwork/uhp/commits/master
 # Set DOCKER var - used by UHP init to determine logging
 ENV DOCKER "yes"
 ENV UHP_USER "uhp"
+ENV DEBIAN_FRONTEND "noninteractive"
+# hadolint ignore=DL3008,DL3005
 
 RUN useradd uhp
 
