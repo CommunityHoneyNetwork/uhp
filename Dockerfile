@@ -13,13 +13,15 @@ LABEL changelog-url "https://github.com/CommunityHoneyNetwork/uhp/commits/master
 ENV DOCKER "yes"
 ENV UHP_USER "uhp"
 ENV DEBIAN_FRONTEND "noninteractive"
-# hadolint ignore=DL3008,DL3005
 
 RUN useradd uhp
 
+# hadolint ignore=DL3008,DL3005
 RUN apt-get update \
-    && apt-get install -y ansible python-apt \
-    && apt-get install -y git jq python3-minimal python3-pip authbind curl
+    && apt-get install --no-install-recommends -y ansible python-apt \
+    && apt-get install --no-install-recommends -y git jq python3-minimal python3-pip authbind curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /code /etc/uhp
 RUN chown ${UHP_USER} /etc/uhp
@@ -30,7 +32,8 @@ COPY requirements.txt /code
 COPY logging.cfg.template /code
 RUN chmod +x /code/entrypoint.sh
 
-RUN pip3 install -r /code/requirements.txt
+RUN python3 -m pip install --upgrade pip setuptools wheel \
+  && python3 -m pip install -r /code/requirements.txt
 
 RUN cd /opt && \
     git clone --branch 1.1.1 https://github.com/MattCarothers/uhp && \
