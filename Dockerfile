@@ -1,13 +1,13 @@
 FROM ubuntu:18.04
 
-LABEL maintainer Team Stingar <team.stingar@duke.edu>
+LABEL maintainer="Team Stingar <team-stingar@duke.edu>"
 LABEL name "uhp"
-LABEL version "1.9"
+LABEL version="1.9.1"
 LABEL release "1"
-LABEL summary "UHP HoneyPot Container"
-LABEL description "Universal Honey Pot is a medium interaction honeypot that allows defenders to quickly implement line-based TCP protocols with a simple JSON configuration."
-LABEL authoritative-source-url "https://github.com/CommunityHoneyNetwork/uhp"
-LABEL changelog-url "https://github.com/CommunityHoneyNetwork/uhp/commits/master"
+LABEL summary="UHP HoneyPot Container"
+LABEL description="Universal Honey Pot is a medium interaction honeypot that allows defenders to quickly implement line-based TCP protocols with a simple JSON configuration."
+LABEL authoritative-source-url="https://github.com/CommunityHoneyNetwork/uhp"
+LABEL changelog-url="https://github.com/CommunityHoneyNetwork/uhp/commits/master"
 
 # Set DOCKER var - used by UHP init to determine logging
 ENV DOCKER "yes"
